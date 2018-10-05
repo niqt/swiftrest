@@ -6,6 +6,8 @@
 //  Copyright © 2018 Nicola De FIlippo. All rights reserved.
 //
 
+
+
 import UIKit
 
 class ViewController: UIViewController {
@@ -38,8 +40,8 @@ class ViewController: UIViewController {
     
     func updateUI(with gitHubInfo: GitHubInfo) {
         let task = URLSession.shared.dataTask(with: gitHubInfo.avatarUrl!,
-                                              completionHandler: { (data, response, error) in
-                                                if let data = data,
+                                              completionHandler: { (dataFromServer, response, error) in
+                                                if let data = dataFromServer,
                                                     let image = UIImage(data: data) {
                                                     DispatchQueue.main.async {
                                                         self.labelName.text = gitHubInfo.name

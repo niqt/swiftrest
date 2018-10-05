@@ -25,14 +25,14 @@ class GitHubInfoController {
         let baseURL = URL(string: "https://api.github.com/users/niqt")!
         
         let query: [String: String] = [
-            "api_key": "DEMO_KEY",
+            "key": "DEMO_KEY",
             ]
         
         let url = baseURL.withQueries(query)!
-        let task = URLSession.shared.dataTask(with: url) { (data,
+        let task = URLSession.shared.dataTask(with: url) { (dataFromServer,
             response, error) in
             let jsonDecoder = JSONDecoder()
-            if let data = data,
+            if let data = dataFromServer,
                 let gitHubInfo = try?
                     jsonDecoder.decode(GitHubInfo.self, from: data) {
                 completion(gitHubInfo)
